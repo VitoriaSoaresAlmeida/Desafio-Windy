@@ -13,7 +13,10 @@ Cypress.Commands.add('tarefa_2', (valor) => {
     cy.visit("https://www.windy.com/?-3.717,-38.529,5")
     cy.get('.ws-wind')
         .should((tag_kt) =>{
-            const quilotonelada = parseInt(tag_kt.text().replaceAll(' ','').replaceAll('"','').substring(0, tag_kt.text().length - 2))
+            const quilotonelada = parseInt(
+                tag_kt.text().replaceAll(' ','').replaceAll('"','')
+                .substring(0, tag_kt.text().replaceAll(' ','').replaceAll('"','').length - 2)
+            )
             expect (quilotonelada).to.be.greaterThan(valor)
         })
 })
